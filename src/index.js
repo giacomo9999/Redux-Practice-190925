@@ -1,28 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import Room from "./Room";
 import "./index.css";
 
-class Room extends React.Component {
-  state = {
-    isLightOn: true
-  };
+const initialState = {
+  isLightOn: true
+};
 
-  flipLight = () => {
-    this.setState({
-      isLightOn: !this.state.isLightOn
-    });
-  };
-
-  render() {
-    const lightedness = this.state.isLightOn ? "lit" : "dark";
-    return (
-      <div className={`room ${lightedness}`}>
-        the room is {lightedness}
-        <br />
-        <button onClick={this.flipLight}>flip</button>
-      </div>
-    );
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "FLIPLIGHT":
+      return {
+        isLightOn: !state.isLightOn
+      };
+    default:
+      return state;
   }
 }
 
-ReactDOM.render(<Room />, document.getElementById("root"));
+const store = createStore(reducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Room />
+  </Provider>,
+  document.getElementById("root")
+);
