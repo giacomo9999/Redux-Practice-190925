@@ -6,12 +6,30 @@ body,
   margin: 0;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+body {
+  /* background color 0 */
+  margin: 0;
+  background-color: #1c2a39;
+  font-family: "Oswald", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .room {
-  margin: 40px;
+  /* margin: 40px; */
+  padding: 20px;
   text-align: center;
 }
 
 button {
+  height: 50px;
+  width: 100px;
   margin-top: 10px;
 }
 
@@ -24,4 +42,3 @@ button {
   background-color: black;
   color: white;
 }
-
